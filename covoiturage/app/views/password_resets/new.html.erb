@@ -1,0 +1,35 @@
+<h1>Reset Your Password</h1>
+
+<% if params[:variable].present? %>
+
+    <%= form_with model: @conducteur, url: password_reset_path(variable: params[:variable]) do |form|  %>
+
+    <div>
+
+        <%= form.label :email %>
+        <%= form.email_field :email %>
+
+    </div>
+
+    <div>
+        <%= form.submit "Reset password" %>
+    </div>
+    <% end %>
+
+<% else %>
+
+    <%= form_with model: @user, url: password_reset_path do |form|  %>
+
+    <div>
+
+        <%= form.label :email %>
+        <%= form.email_field :email %>
+
+    </div>
+
+    <div>
+        <%= form.submit "Reset password" %>
+    </div>
+    <% end %>
+
+<% end %>

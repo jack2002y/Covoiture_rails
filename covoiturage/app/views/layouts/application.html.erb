@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Covoiturage</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div><%= notice %></div>
+    <div><%= alert %></div>
+
+    <% if controller_name == "choices" && action_name == "show" %>
+    <% elsif controller_name == "conducteurs" && action_name == "new" %>
+    <% elsif controller_name == "registrations" && action_name == "new" %>
+    
+    <% elsif user_signed_in?  %>
+    
+      <%= link_to "Edit password", edit_password_path %>
+      <%= button_to "Log out", session_path, method: :delete %>
+
+    <% elsif conducteur_signed_in? %>
+
+      <%= link_to "Edit password", edit_password_path %>
+      <%= button_to "Log out", session_path, method: :delete %>
+    
+    <% else %>
+    
+      <!-- <%= link_to "Sign Up", new_registration_path %> -->
+      <%= link_to "Sign Up", choice_path %>
+      <!-- <%= link_to "Log in", new_session_path %> -->
+      <% variable = "register" %>
+      <%= link_to "Log in", choice_var_path(variable: variable) %>
+
+
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+<% if params[:variable].present? %>
+    <h1>Quelle type d'utilisateur etes vous ?</h1>  
+
+    <% variable = "register" %>
+    <%= link_to "un Conducteur", new_session_conducteur_path %>
+    <%= link_to "Un passager",new_session_path %>
+    <%= link_to "back", root_path %>
+<% else %>
+    <h1>Quelle type d'utilisateur voulez vous etre ?</h1>
+
+    <%= link_to "un Conducteur", new_conducteur_path %>
+    <%= link_to "Un passager", new_registration_path %>
+    <%= link_to "back", root_path %>
+<% end  %>

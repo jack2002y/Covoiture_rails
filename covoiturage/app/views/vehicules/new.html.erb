@@ -1,0 +1,47 @@
+<h1> Renseignez votre voiture </h1>
+
+<%= form_with model: [ @conducteur, @conducteur.build_vehicule], url: conducteur_vehicules_path(:current_conducteur)  do |form|  %>
+
+    <% if form.object.errors.any? %>
+
+        <% form.object.errors.full_messages.each do |message| %>
+
+            <div><%= message %></div>
+
+        <% end %>
+
+    <% end %>
+
+    <div>
+
+        <%= form.label :nom_vehicule %>
+        <%= form.text_field :nom_vehicule %>
+
+    </div>
+    
+    <div>
+
+        <%= form.label :type_vehicule %>
+        <%= form.text_field :type_vehicule %>
+
+    </div>
+
+    <div>
+
+        <%= form.label :nombre_place %>
+        <%= form.text_field :nombre_place %>
+
+    </div>
+
+    <div>
+
+        <%= form.label :pris_place %>
+        <%= form.text_field :pris_place %>
+
+    </div>
+
+    <div>
+        <%= form.submit "Ajouter voiture" %>
+    </div>
+
+    <% end %>
